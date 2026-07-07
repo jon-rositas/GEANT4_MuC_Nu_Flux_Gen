@@ -1,0 +1,42 @@
+# ========================================================
+# IMCC 10 TeV CoM Muon Beam Parameters (s = -200m)
+# ========================================================
+
+# Must start by initializing the session, otherwise the commands go nowheres
+/run/initialize
+
+# Modify Muon Lifetime (The Time Dilation Hack) (basically just biasing)
+# This drops the decay length to ~1.4 km, ensuring high stats in our 200m window
+/particle/select mu-
+/particle/property/lifetime 1.0e-10 s
+
+# Filename
+/analysis/setFileName IMCC_5TeV_5mm_Sigma
+
+# The particle you want to fire
+/gps/particle mu-
+
+# Longitudinal and Energy Profile
+/gps/energy 5 TeV
+/gps/ene/type Gauss
+/gps/ene/sigma 5 GeV
+
+# Spatial Distribution (3D Beam Profile)
+/gps/pos/type Beam
+/gps/pos/shape Ellipse
+/gps/pos/centre 0 0 -200 m
+
+# Beam sizes derived from beta functions: bx=50km, by=20km
+/gps/pos/sigma_x 5.1 mm
+/gps/pos/sigma_y 3.2 mm
+# /gps/pos/sigma_z 1.5 mm
+# Geant4 doesn't accept distributions longitudinally, but 1.5 milimeters
+# over a distance of 200 meters hardly matters. That's picoseconds of timing
+# difference. The line could be completely eliminated, but I leave it here for
+# instructional purposes
+
+# point the gun at the target
+/gps/direction 0 0 1
+
+# Run the simulation (e.g., generate 100,000 primary muons)
+/run/beamOn 100000
