@@ -4,7 +4,7 @@ Scripts that generate flux files using GEANT4, specifically for neutrino interac
 These scripts use the official muon collider 3 TeV and 10 TeV ring magnet layout MAD-X files and information to propagate a muon beam using BDSIM to generate muons with a biased lifetime to facilitate decays to neutrinos, which are read out 6 meters from the interaction point. This generates two neutrino flux files, one optimized for GEANT4 investigations and one specifically created to be GENIE-readable. This is all done within an interactive Python wrapper that aims to make the process of generating and saving these files as intuitive and accessible as possible.
 
 ## Dependencies and Software
-This installation process assumes that you already have Python and ROOT installed and configured for your terminal. You will also need MAD-X, BDSIM, and GEANT4.
+This installation process assumes that you already have Python and ROOT installed and configured for your terminal. You will also need MAD-X, BDSIM, GEANT4, and a public installation of CLHEP.
 
 ### CLHEP & GEANT4
 While it is assumed that you have GEANT4 installed, you may not have CLHEP configured properly to work with BDSIM. GEANT4 can handle installing a local version of CLHEP that it works with if you don't have it already installed for GEANT4 to reference. However, this won't work with BDSIM, so you need to have CLHEP installed on its own and GEANT4 configured to use that one so BDSIM and GEANT4 are on the same page. If that is true for you, you can skip this step. If not, instructions on making the switch are given here.
