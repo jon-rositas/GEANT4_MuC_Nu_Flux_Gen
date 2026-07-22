@@ -54,7 +54,7 @@ sudo make install
 ### Editing PYBDSIM
 BDSIM is designed to work with modern colliders, which, famously, do not shoot muons. Therefore, PYBDSIM only knows natively what "protons", "electrons", and "positrons" are. Therefore, if it tries to do your Twiss parameter conversions and sees that you set the magnets to be calibrated for this mysterious "MUON" particle, it will break. This is solved by making a small edit to the conversion file.
 ```
-nano /home/jrositas/.local/lib/python3.10/site-packages/pybdsim/Convert/_MadxTfs2Gmad.py
+nano /home/$USER/.local/lib/python3.10/site-packages/pybdsim/Convert/_MadxTfs2Gmad.py
 ```
 We will be editing the definition of `MadxTfs2GmadBeam`. I use nano here because I know that I can then type `ctrl+/ 736` to go to approximately the correct line to edit, but you may do this in any text editor you like. Locate the block that converts particle names as text to symbolic particle names.
 ```
